@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, Menu, Tray, nativeImage} = require('electron');
+const {app, BrowserWindow} = require('electron');
 const rendererPath ='./index.html'
 let win = null;
 const quips = [
