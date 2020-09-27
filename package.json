@@ -4,7 +4,7 @@
   "description": "Print random Lord Of The Rings Quips! ",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Evilu/LotorQuips-Node.js-Israel/issues"
   },
-  "homepage": "https://github.com/Evilu/LotorQuips-Node.js-Israel#readme"
+  "homepage": "https://github.com/Evilu/LotorQuips-Node.js-Israel#readme",
+  "devDependencies": {
+    "electron": "^10.1.2"
+  }
 }

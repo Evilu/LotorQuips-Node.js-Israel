@@ -1,3 +1,6 @@
+const {app, BrowserWindow, ipcMain, Menu, Tray, nativeImage} = require('electron');
+const rendererPath ='./index.html'
+let win = null;
 const quips = [
     {
         user: 'Gimli',
@@ -20,7 +23,30 @@ const quips = [
         quip: 'There is only one lord of the rings. And he does not share power!'
     }
 ]
-setInterval(function () {
-    const picker = Math.floor(Math.random() * quips.length);
-    console.log(`${quips[picker].user}: "${quips[picker].quip}"`)
-}, 3000);
+
+
+function createWindow() {
+    win = new BrowserWindow({
+        width: 800,
+        height: 600,
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+
+    win.webContents.on('did-finish-load', () => {
+
+        win.webContents.send('from_main', `${new Date()}: App version ${app.getVersion()}`);
+    });
+
+    win.loadFile(rendererPath);
+
+    setInterval(function () {
+        const picker = Math.floor(Math.random() * quips.length);
+        win.webContents.send('from_main', `${quips[picker].user}: "${quips[picker].quip}"`);
+
+    }, 3000);
+
+}
+
+app.on('ready', createWindow);
