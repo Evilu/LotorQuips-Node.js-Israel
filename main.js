@@ -1,5 +1,5 @@
 const {app, BrowserWindow} = require('electron');
-const rendererPath ='./index.html'
+const rendererPath = './index.html'
 let win = null;
 const quips = [
     {
@@ -33,20 +33,17 @@ function createWindow() {
             nodeIntegration: true
         }
     });
-
-    win.webContents.on('did-finish-load', () => {
-
-        win.webContents.send('from_main', `${new Date()}: App version ${app.getVersion()}`);
-    });
-
     win.loadFile(rendererPath);
 
-    setInterval(function () {
-        const picker = Math.floor(Math.random() * quips.length);
-        win.webContents.send('from_main', `${quips[picker].user}: "${quips[picker].quip}"`);
+    win.webContents.on('did-finish-load', () => {
+        win.webContents.send('from_main', `${new Date()}: App version ${app.getVersion()}`);
 
-    }, 3000);
+        setInterval(function () {
+            const picker = Math.floor(Math.random() * quips.length);
+            win.webContents.send('from_main', `${quips[picker].user}: "${quips[picker].quip}"`);
 
+        }, 3000);
+    });
 }
 
 app.on('ready', createWindow);
