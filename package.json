@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder",
+    "publish-windows": " GH_TOKEN=****** electron-builder --win --publish always"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,6 @@
     "electron": "^10.1.2",
     "electron-builder": "^22.8.1"
   },
-
   "build": {
     "appId": "com.yuvalStarnes.lotorQuips",
     "productName": "lotorQuips",
@@ -42,5 +42,12 @@
       ],
       "icon": "build/icon.ico"
     }
+  },
+  "dependencies": {
+    "electron-updater": "^4.3.5"
+  },
+  "publish": {
+    "provider": "github",
+    "owner": "Evilu"
   }
 }
