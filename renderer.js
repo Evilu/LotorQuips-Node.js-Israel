@@ -17,6 +17,3 @@ ipcRenderer.on('update_available', () => {
     notification.classList.remove('hidden');
 });
 
-function closeNotification() {
-    notification.classList.add('hidden');
-}

@@ -32,6 +32,18 @@ const quips = [
     {
         user: 'Gandelf',
         quip: 'There is only one lord of the rings. And he does not share power!'
+    },
+    {
+        user: 'Legolas',
+        quip:'THEY’RE TAKING THE HOBBITS TO ISENGARD.'
+    },
+    {
+        user: 'Legolas',
+        quip:'A RED SUN RISES. BLOOD HAS BEEN SPILLED THIS NIGHT.'
+    },
+    {
+        user: 'Legolas',
+        quip:'AND YOU HAVE MY BOW.'
     }
 ]
 

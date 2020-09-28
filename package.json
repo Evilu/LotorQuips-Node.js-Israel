@@ -1,6 +1,6 @@
 {
   "name": "lotorquips-node.js-israel",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Print random Lord Of The Rings Quips! ",
   "main": "main.js",
   "scripts": {
