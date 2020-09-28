@@ -1,10 +1,12 @@
 {
   "name": "lotorquips-node.js-israel",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Print random Lord Of The Rings Quips! ",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron .",
+    "build": "electron-builder",
+    "publish-windows": " GH_TOKEN=****** electron-builder --win --publish always"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,40 @@
   "bugs": {
     "url": "https://github.com/Evilu/LotorQuips-Node.js-Israel/issues"
   },
-  "homepage": "https://github.com/Evilu/LotorQuips-Node.js-Israel#readme"
+  "homepage": "https://github.com/Evilu/LotorQuips-Node.js-Israel#readme",
+  "devDependencies": {
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.1"
+  },
+  "build": {
+    "appId": "com.yuvalStarnes.lotorQuips",
+    "productName": "lotorQuips",
+    "copyright": "Copyright © yuvalStarnes",
+    "directories": {
+      "output": "release/"
+    },
+    "mac": {
+      "category": "lotorQuips",
+      "target": [
+        "zip",
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "electron-updater": "^4.3.5"
+  },
+  "publish": {
+    "provider": "github",
+    "owner": "Evilu"
+  }
 }
