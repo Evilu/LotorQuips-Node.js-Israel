@@ -1,6 +1,13 @@
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, Menu, Tray, nativeImage} = require('electron');
 const rendererPath = './index.html'
+const path = require('path');
+
+const iconPath = path.join(__dirname, 'picture.jpg');
+const trayIcon = nativeImage.createFromPath(iconPath).resize({width: 16, height: 16});
+
 let win = null;
+let tray = null;
+
 const quips = [
     {
         user: 'Gimli',
@@ -34,6 +41,7 @@ function createWindow() {
         }
     });
     win.loadFile(rendererPath);
+    tray = new Tray(trayIcon);
 
     win.webContents.on('did-finish-load', () => {
         win.webContents.send('from_main', `${new Date()}: App version ${app.getVersion()}`);
@@ -43,7 +51,27 @@ function createWindow() {
             win.webContents.send('from_main', `${quips[picker].user}: "${quips[picker].quip}"`);
 
         }, 3000);
+
     });
+
+    const contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'Show LOTOR', click: function () {
+                win.show();
+            }
+        },
+        {
+            label: 'Quit', click: function () {
+
+                app.quit();
+            }
+        }
+
+    ]);
+
+
+    tray.setToolTip('LOTORquips');
+    tray.setContextMenu(contextMenu)
 }
 
 app.on('ready', createWindow);

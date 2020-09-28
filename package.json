@@ -4,7 +4,8 @@
   "description": "Print random Lord Of The Rings Quips! ",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,29 @@
   },
   "homepage": "https://github.com/Evilu/LotorQuips-Node.js-Israel#readme",
   "devDependencies": {
-    "electron": "^10.1.2"
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.1"
+  },
+
+  "build": {
+    "appId": "com.yuvalStarnes.lotorQuips",
+    "productName": "lotorQuips",
+    "copyright": "Copyright © yuvalStarnes",
+    "directories": {
+      "output": "release/"
+    },
+    "mac": {
+      "category": "lotorQuips",
+      "target": [
+        "zip",
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        "NSIS"
+      ],
+      "icon": "build/icon.ico"
+    }
   }
 }
