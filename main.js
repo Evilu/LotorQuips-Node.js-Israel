@@ -1,4 +1,6 @@
 const {app, BrowserWindow, Menu, Tray, nativeImage} = require('electron');
+const {autoUpdater} = require('electron-updater');
+
 const rendererPath = './index.html'
 const path = require('path');
 
@@ -7,6 +9,8 @@ const trayIcon = nativeImage.createFromPath(iconPath).resize({width: 16, height:
 
 let win = null;
 let tray = null;
+autoUpdater.autoDownload = true;
+autoUpdater.checkForUpdatesAndNotify();
 
 const quips = [
     {
@@ -75,3 +79,13 @@ function createWindow() {
 }
 
 app.on('ready', createWindow);
+
+
+autoUpdater.on('update-available', () => {
+    win.webContents.send('update_available');
+    win.webContents.send('from_main', `New update found, downloading....`);
+});
+
+autoUpdater.on('update-downloaded', () => {
+    autoUpdater.quitAndInstall();
+});

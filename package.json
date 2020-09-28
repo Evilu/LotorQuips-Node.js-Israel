@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder",
-    "publish-windows": " GH_TOKEN=****** electron-builder --win --publish always"
+    "publish-windows": " GH_TOKEN=**** electron-builder --win --publish always"
   },
   "repository": {
     "type": "git",
