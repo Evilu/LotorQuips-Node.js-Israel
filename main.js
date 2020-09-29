@@ -56,13 +56,14 @@ function createWindow() {
 
     const contextMenu = Menu.buildFromTemplate([
         {
-            label: 'Show LOTOR', click: function () {
+            label: 'Show LOTOR',
+            click: function () {
                 win.show();
             }
         },
         {
-            label: 'Quit', click: function () {
-
+            label: 'Quit',
+            click: function () {
                 app.quit();
             }
         }
